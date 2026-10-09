@@ -1,0 +1,191 @@
+/* --- Fonts --- */
+@font-face {
+    font-family: "Open Sans";
+    src: url("Fonts/OpenSans-Regular.ttf") format("truetype");
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Open Sans";
+    src: url("Fonts/OpenSans-SemiBold.ttf") format("truetype");
+    font-weight: 600;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Open Sans";
+    src: url("Fonts/OpenSans-Bold.ttf") format("truetype");
+    font-weight: 700;
+    font-style: normal;
+}
+
+/* --- Proterties/Colors/MainFont --- */
+:root {
+    --color-dark: #0B294D;
+    --color-white: #FFFFFF;
+    --color-accent: #4CA3E5;
+    --color-navy: #11335A;
+    --font-main: "Open Sans", Arial, sans-serif;
+}
+
+/* --- Header logo --- */
+nav img {
+    display: block;
+    width: 4rem;
+    height: 4rem;
+    margin: 0 auto;
+    border-radius: 0.75rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+/* --- Page base --- */
+
+body {
+    margin: 0;
+    padding: 0 1rem 2rem;
+    background-color: var(--color-dark);
+    color: var(--color-white);
+    font-family: var(--font-main);
+    font-weight: 400;
+    line-height: 1.7;
+}
+
+/* --- Header --- */
+header {
+    margin: 0 -1rem 2rem;
+    padding: 1.25rem 1rem;
+    background-color: var(--color-navy);
+    border-bottom: 4px solid var(--color-accent);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.45);
+    text-align: center;
+}
+
+/* --- Navigation --- */
+nav ul {
+    margin: 0.75rem 0 0;
+    padding: 0;
+    list-style: none;
+}
+
+nav li {
+    display: inline-block;
+    margin: 0.25rem;
+}
+
+nav a {
+    display: inline-block;
+    padding: 0.4rem 1.1rem;
+    border-radius: 2rem;
+    color: var(--color-white);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+nav a:hover {
+    background-color: var(--color-accent);
+    color: var(--color-dark);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    transform: rotate(-4deg);
+}
+
+/* --- Main Content --- */
+main {
+    max-width: 52rem;
+    margin: 0 auto;
+}
+
+/* --- Sections --- */
+section {
+    margin-bottom: 2rem;
+    padding: 1.5rem 2rem;
+    background-color: var(--color-navy);
+    border-radius: 1rem;
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.5);
+}
+
+/* --- Intro --- */
+#intro {
+    background-color: var(--color-accent);
+    color: var(--color-dark);
+    text-align: center;
+}
+
+/* --- Headings --- */
+h1 {
+    margin: 0 0 0.5rem;
+    font-size: 2.4rem;
+    font-weight: 700;
+}
+
+h2 {
+    margin-top: 0;
+    padding-bottom: 0.4rem;
+    border-bottom: 3px solid var(--color-accent);
+    font-size: 1.8rem;
+    font-weight: 700;
+}
+
+h3 {
+    margin-top: 0;
+    color: var(--color-accent);
+    font-size: 1.4rem;
+    font-weight: 600;
+}
+
+/* --- Project Cards --- */
+.project-summary {
+    margin-bottom: 1.75rem;
+    padding: 1.25rem;
+    background-color: var(--color-dark);
+    border: 2px solid var(--color-accent);
+    border-radius: 1rem;
+    transition: box-shadow 0.3s;
+}
+
+.project-summary:hover {
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.6);
+}
+
+/* --- Media --- */
+.project-summary img,
+.project-summary iframe {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    margin: 0 auto 1rem;
+    border: 0;
+    border-radius: 0.75rem;
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.6);
+}
+
+/* --- Links --- */
+a {
+    color: var(--color-accent);
+    font-weight: 600;
+}
+
+/* --- Games Buttons --- */
+a[target="_blank"] {
+    display: inline-block;
+    padding: 0.5rem 1.25rem;
+    background-color: var(--color-accent);
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    color: var(--color-dark);
+    font-weight: 700;
+    text-decoration: none;
+    transform: rotate(-2deg);
+}
+
+/* --- Footer --- */
+footer {
+    max-width: 52rem;
+    margin: 0 auto;
+    padding: 1rem;
+    background-color: var(--color-navy);
+    border-radius: 1rem;
+    box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.4);
+    text-align: center;
+}
