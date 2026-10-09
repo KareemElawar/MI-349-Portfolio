@@ -15,3 +15,10 @@ A content full portfolio site structure for beguining of MI 349 final project.
 **About**: Background, leadership experience, and personal interests
 **Projects**: Summary for each game: TreeKeeper, The Last Halloween, Dragon's Hoard
 **Contact**: fake email link
+
+## Styling
+
+**Font**: Open Sans (local files in the `Fonts` folder)
+**Colors**: #0B294D, #FFFFFF, #4CA3E5, #11335A
+**Custom properties**: `--color-dark`, `--color-white`, `--color-accent`, `--color-navy`, `--font-main`
+**Layout**: Inline-block navigation and a centered content column
