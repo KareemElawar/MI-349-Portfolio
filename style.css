@@ -34,16 +34,23 @@ nav img {
     display: block;
     width: 4rem;
     height: 4rem;
-    margin: 0 auto;
+    margin: 0; 
     border-radius: 0.75rem;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
 }
 
 /* --- Page base --- */
 
+*, *::before, *::after { box-sizing: border-box; }
+
 body {
+    display: grid;
+    grid-template-areas: "header" "main" "footer";
+    grid-template-rows: auto 1fr auto;
+    gap: 2rem;
+    min-height: 100vh;
     margin: 0;
-    padding: 0 1rem 2rem;
+    padding: 0;
     background-color: var(--color-dark);
     color: var(--color-white);
     font-family: var(--font-main);
@@ -53,8 +60,12 @@ body {
 
 /* --- Header --- */
 header {
-    margin: 0 -1rem 2rem;
+    grid-area: header; 
+    margin: 0;
     padding: 1.25rem 1rem;
+    position: sticky; 
+    top: 0;
+    z-index: 999;
     background-color: var(--color-navy);
     border-bottom: 4px solid var(--color-accent);
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.45);
@@ -62,15 +73,25 @@ header {
 }
 
 /* --- Navigation --- */
+nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+}
+
 nav ul {
-    margin: 0.75rem 0 0;
+    display: flex;
+    flex-wrap: wrap; 
+    justify-content: center;
+    gap: 0.5rem;
+    margin: 0;
     padding: 0;
     list-style: none;
 }
 
 nav li {
-    display: inline-block;
-    margin: 0.25rem;
+    margin: 0;
 }
 
 nav a {
@@ -91,14 +112,21 @@ nav a:hover {
 
 /* --- Main Content --- */
 main {
-    max-width: 52rem;
-    margin: 0 auto;
+    grid-area: main;
+    display: grid;
+    gap: 1.5rem;
+    align-content: start;
+}
+
+main, footer {
+    width: min(100% - 2rem, 52rem); 
+    margin-inline: auto;
 }
 
 /* --- Sections --- */
 section {
-    margin-bottom: 2rem;
-    padding: 1.5rem 2rem;
+    margin-bottom: 0; 
+    padding: 1.25rem; 
     background-color: var(--color-navy);
     border-radius: 1rem;
     box-shadow: 0 8px 18px rgba(0, 0, 0, 0.5);
@@ -114,7 +142,7 @@ section {
 /* --- Headings --- */
 h1 {
     margin: 0 0 0.5rem;
-    font-size: 2.4rem;
+    font-size: clamp(1.8rem, 5vw, 2.4rem);
     font-weight: 700;
 }
 
@@ -122,7 +150,7 @@ h2 {
     margin-top: 0;
     padding-bottom: 0.4rem;
     border-bottom: 3px solid var(--color-accent);
-    font-size: 1.8rem;
+    font-size: clamp(1.4rem, 4vw, 1.8rem);
     font-weight: 700;
 }
 
@@ -133,14 +161,49 @@ h3 {
     font-weight: 600;
 }
 
+
+/*
+    Claude code helped me with the responsive design changes to my Project Cards section.
+
+    The prompt was, "Write the CSS for the Project Cards section so that 
+    it uses CSS Grid for the layout of the section and Flexbox inside each 
+    project card. Make sure it would work well on mobile."
+
+    I already have Claude the whole HTML and CSS files just so it could tell 
+    what the layout and content should be / what the intent was.
+
+    The output was the #projects, #project h2, and the display/flex/width adjustments
+*/
+
 /* --- Project Cards --- */
+#projects {
+    display: grid;
+    gap: 1.5rem;
+}
+
+#projects h2 { 
+    grid-column: 1 / -1; 
+}
+
 .project-summary {
-    margin-bottom: 1.75rem;
+    display: flex; 
+    margin-bottom: 0;
     padding: 1.25rem;
     background-color: var(--color-dark);
     border: 2px solid var(--color-accent);
     border-radius: 1rem;
     transition: box-shadow 0.3s;
+}
+
+.project-summary > div {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.project-summary a[target="_blank"] {
+    margin-top: auto; 
+    align-self: flex-start;
 }
 
 .project-summary:hover {
@@ -151,7 +214,7 @@ h3 {
 .project-summary img,
 .project-summary iframe {
     display: block;
-    max-width: 100%;
+    width: 100%;
     height: auto;
     aspect-ratio: 16 / 9;
     margin: 0 auto 1rem;
@@ -181,11 +244,28 @@ a[target="_blank"] {
 
 /* --- Footer --- */
 footer {
-    max-width: 52rem;
-    margin: 0 auto;
+    grid-area: footer; 
+    margin-bottom: 2rem;
     padding: 1rem;
     background-color: var(--color-navy);
     border-radius: 1rem;
     box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.4);
     text-align: center;
+}
+
+/* --- Breakpoints --- */
+@media (min-width: 600px) {
+    nav { flex-direction: row; justify-content: space-between; }
+    section { padding: 1.5rem 2rem; }
+}
+
+@media (min-width: 800px) {
+    #projects { grid-template-columns: repeat(2, 1fr); }
+    .project-summary:first-of-type { grid-column: 1 / -1; }
+}
+
+@media (min-width: 1200px) {
+    main, footer { width: min(100% - 6rem, 75rem); }
+    #projects { grid-template-columns: repeat(3, 1fr); }
+    .project-summary:first-of-type { grid-column: auto; }
 }
